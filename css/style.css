@@ -579,7 +579,9 @@ section {
 
 .section-title p {
   margin: 15px auto 0 auto;
-  font-weight: 300;
+  font-weight: 400;
+  color: black;
+  margin-bottom: 30px;
 }
 
 @media (min-width: 1024px) {
@@ -809,6 +811,129 @@ section {
   100% {
     transform: scale(1, 1);
     opacity: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+# Pricing Section
+--------------------------------------------------------------*/
+.pricing .pricing-item {
+  padding: 60px 40px;
+  box-shadow: 0 3px 20px -2px rgba(108, 117, 125, 0.15);
+  background: #fff;
+  height: 100%;
+  border-top: 4px solid #fff;
+  border-radius: 5px;
+}
+
+.pricing h3 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 34px;
+  color: #501E8B;
+  margin-bottom: 30px;
+}
+
+.pricing h4 {
+  font-size: 25px;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-family: var(--font-primary);
+  margin-bottom: 25px;
+}
+
+.pricing h5 {
+  font-size: 48px;
+  color: #501E8B;
+}
+
+.pricing h5 sup {
+  font-size: 28px;
+}
+
+.pricing h5 span {
+  color: rgba(108, 117, 125, 0.8);
+  font-size: 18px;
+}
+
+.pricing ul {
+  padding: 20px 0;
+  list-style: none;
+  color: #6c757d;
+  text-align: left;
+  line-height: 20px;
+}
+
+.pricing ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.pricing ul i {
+  color: #501E8B;
+  font-size: 14px;
+  padding-right: 3px;
+  margin-right: 10px;
+}
+
+.pricing ul .na {
+  color: rgba(108, 117, 125, 0.5);
+}
+
+.pricing ul .na i {
+  color: rgba(108, 117, 125, 0.5);
+}
+
+.pricing ul .na span {
+  text-decoration: line-through;
+}
+
+.pricing .buy-btn {
+  display: inline-block;
+  padding: 12px 35px;
+  border-radius: 4px;
+  color: #501E8B;
+  transition: none;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--font-primary);
+  transition: 0.3s;
+  border: 1px solid #501E8B;
+}
+
+.pricing .buy-btn:hover {
+  background: #501E8B;
+  color: #fff;
+}
+
+.pricing .featured {
+  border-top-color: #501E8B;
+}
+
+.pricing .featured .buy-btn {
+  background: #501E8B;
+  color: #fff;
+}
+
+@media (max-width: 992px) {
+  .pricing .box {
+    max-width: 60%;
+    margin: 0 auto 30px auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .pricing .box {
+    max-width: 80%;
+    margin: 0 auto 30px auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .pricing .box {
+    max-width: 100%;
+    margin: 0 auto 30px auto;
   }
 }
 
