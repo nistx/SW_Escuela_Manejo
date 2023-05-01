@@ -823,6 +823,7 @@ section {
   height: 100%;
   border-top: 4px solid #fff;
   border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 .pricing h3 {
@@ -1018,9 +1019,13 @@ section {
   margin-right: 0;
 }
 
-.prueba {
+.individual {
   position: relative !important;
   margin: auto !important;
+}
+
+.menu-container {
+  height: auto !important;
 }
 
 
