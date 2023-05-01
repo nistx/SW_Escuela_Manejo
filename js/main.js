@@ -196,32 +196,37 @@
   /**
    * Menu isotope and filter
    */
-  window.addEventListener("load", () => {
-    let menuContainer = select(".menu-container");
+
+  document.addEventListener("DOMContentLoaded", () => {
+    let menuContainer = document.querySelector(".menu-container");
     if (menuContainer) {
       let menuIsotope = new Isotope(menuContainer, {
         itemSelector: ".menu-item",
         layoutMode: "fitRows",
       });
 
-      let menuFilters = select("#menu-flters li", true);
+      let menuFilters = document.querySelectorAll("#menu-flters li");
 
-      on(
-        "click",
-        "#menu-flters li",
-        function (e) {
+      menuFilters.forEach((filter) => {
+        filter.addEventListener("click", (e) => {
           e.preventDefault();
-          menuFilters.forEach(function (el) {
+
+          menuFilters.forEach((el) => {
             el.classList.remove("filter-active");
           });
-          this.classList.add("filter-active");
+          filter.classList.add("filter-active");
 
           menuIsotope.arrange({
-            filter: this.getAttribute("data-filter"),
+            filter: filter.getAttribute("data-filter"),
           });
-        },
-        true
-      );
+        });
+      });
+
+      // Filtrar por defecto al cargar la página
+      let defaultFilter = document.querySelector("#menu-flters li:first-child");
+      if (defaultFilter) {
+        defaultFilter.click();
+      }
     }
   });
 
