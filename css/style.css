@@ -1279,6 +1279,7 @@ section {
 --------------------------------------------------------------*/
 .gallery {
   padding-bottom: 0;
+  background: #E9E3F1;
 }
 
 .gallery .gallery-item {
