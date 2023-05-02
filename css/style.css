@@ -1590,7 +1590,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #35322d;
+  background: #501E8B;
   color: #fff;
   font-size: 14px;
   text-align: center;
@@ -1600,7 +1600,7 @@ section {
 #footer h3 {
   font-size: 36px;
   font-weight: 700;
-  color: #ffb03b;
+  color: white;
   position: relative;
   padding: 0;
   margin: 0 0 15px 0;
@@ -1608,19 +1608,14 @@ section {
 
 #footer p {
   font-size: 15;
-  font-style: italic;
   padding: 0;
-  margin: 0 0 40px 0;
-}
-
-#footer .social-links {
   margin: 0 0 40px 0;
 }
 
 #footer .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #46423b;
+  background: #321357;
   color: #fff;
   line-height: 1;
   padding: 8px 0;
@@ -1633,13 +1628,9 @@ section {
 }
 
 #footer .social-links a:hover {
-  background: #ffb03b;
+  background: #D3C7E2;
 }
 
-#footer .copyright {
-  margin: 0 0 5px 0;
-}
-
-#footer .credits {
-  font-size: 13px;
+#footer p {
+  margin-bottom: 20px;
 }
