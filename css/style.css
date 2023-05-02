@@ -570,11 +570,11 @@ section {
   padding-bottom: 30px;
 }
 
-.section-title h2 {
+.section-title h3 {
   margin: 15px 0 0 0;
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 700;
-  color: #5f5950;
+  color: #501E8B;
 }
 
 .section-title h2 span {
@@ -1404,6 +1404,10 @@ section {
 /*--------------------------------------------------------------
 # Testimonials
 --------------------------------------------------------------*/
+.container-testimonios {
+  padding-top: 40px;
+  padding-bottom: 0;
+}
 
 .opiniones h3 {
   font-weight: 700;
