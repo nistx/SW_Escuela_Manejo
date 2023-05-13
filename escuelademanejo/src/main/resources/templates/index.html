@@ -16,15 +16,15 @@
     <script src="https://kit.fontawesome.com/c8c4dcb26c.js" crossorigin="anonymous"></script>
 
     <!-- Archivos Vendor CSS  -->
-    <link href="css/animate.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/glightbox.min.css" rel="stylesheet">
-    <link href="css/swiper-bundle.min.css" rel="stylesheet">
-    <link href="css/aos.css" rel="stylesheet">
+    <link th:href="@{/css/animate.min.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/glightbox.min.css}" rel="stylesheet">
+    <link th:href="@{/css/swiper-bundle.min.css}" rel="stylesheet">
+    <link th:href="@{/css/aos.css}" rel="stylesheet">
     <!-- Template Main CSS File -->
-    <link href="css/style.css" rel="stylesheet">
+    <link th:href="@{css/style.css}" rel="stylesheet">
 
-    <link rel="icon" type="image/x-icon" href="img/Logo-Negro.svg" />
+    <link rel="icon" type="image/x-icon" th:href="@{/img/Logo-Negro.svg}" />
 </head>
 
 <body>
@@ -33,7 +33,7 @@
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
             <div class="logo me-auto">
-                <a href="index.html"><img src="img/Logo.svg" alt="" class="img-fluid"></a>
+                <a th:href="@{index.html}"><img src="img/Logo.svg" alt="" class="img-fluid"></a>
             </div>
 
             <nav id="navbar" class="navbar order-last order-lg-0">
@@ -47,7 +47,7 @@
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
-            <a href="login.html" class="book-a-table-btn">Intranet</a>
+            <a th:href="@{login}" class="book-a-table-btn">Intranet</a>
         </div>
     </header><!-- End Header -->
 
@@ -589,13 +589,13 @@
     </footer><!-- Fin Footer -->
 
     <!-- Vendor JS Files -->
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/glightbox.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/swiper-bundle.min.js"></script>
-    <script src="js/aos.js"></script>
+    <script th:src="@{js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{js/glightbox.min.js}"></script>
+    <script th:src="@{js/isotope.pkgd.min.js}"></script>
+    <script th:src="@{js/swiper-bundle.min.js}"></script>
+    <script th:src="@{js/aos.js}"></script>
     <!-- Template Main JS File -->
-    <script src="js/main.js"></script>
+    <script th:src="@{js/main.js}"></script>
 </body>
 
 <!-- Botón Whatsapp -->
