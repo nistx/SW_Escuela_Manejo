@@ -1,0 +1,290 @@
+body {
+    font-family: "Montserrat", sans-serif;
+    opacity: 0.8;
+    min-height: 100vh;
+}
+
+.brand-wrapper {
+    margin-bottom: 19px;
+}
+
+.brand-wrapper .logo {
+    height: 37px;
+}
+
+.login-card {
+    border: 0;
+    border-radius: 27.5px;
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.43);
+    overflow: hidden;
+}
+
+.login-card-img {
+    border-radius: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.login-card .card-body {
+    padding: 85px 60px 60px;
+}
+
+@media (max-width: 422px) {
+    .login-card .card-body {
+        padding: 35px 24px;
+    }
+}
+
+.login-card-description {
+    font-size: 30px;
+    color: #461A7A;
+    font-weight: bold;
+    margin-bottom: 23px;
+}
+
+.login-card form {
+    max-width: 326px;
+}
+
+.login-card .form-control {
+    border: 1px solid #d5dae2;
+    padding: 15px 25px;
+    margin-bottom: 20px;
+    min-height: 45px;
+    font-size: 13px;
+    line-height: 15;
+    font-weight: normal;
+}
+
+.login-card .form-control::-webkit-input-placeholder {
+    color: #919aa3;
+}
+
+.login-card .form-control::-moz-placeholder {
+    color: #919aa3;
+}
+
+.login-card .form-control:-ms-input-placeholder {
+    color: #919aa3;
+}
+
+.login-card .form-control::-ms-input-placeholder {
+    color: #919aa3;
+}
+
+.login-card .form-control::placeholder {
+    color: #919aa3;
+}
+
+.login-card .login-btn {
+    padding: 13px 20px 12px;
+    background-color: #461A7A;
+    border-radius: 4px;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+.login-card .login-btn:hover {
+    border: 1px solid #461A7A;
+    background-color: transparent;
+    color: #000;
+}
+
+.login-card .forgot-password-link {
+    font-size: 14px;
+    color: #919aa3;
+    margin-bottom: 12px;
+}
+
+.login-card-footer-text {
+    font-size: 16px;
+    color: #0d2366;
+    margin-bottom: 60px;
+}
+
+@media (max-width: 767px) {
+    .login-card-footer-text {
+        margin-bottom: 24px;
+    }
+}
+
+.login-card-footer-nav a {
+    font-size: 14px;
+    color: #919aa3;
+}
+
+.container-img {
+    position: relative;
+}
+
+#inicio {
+    width: 100%;
+    height: 80vh;
+    /* background-color: rgba(12, 11, 10, 1); */
+    overflow: hidden;
+    padding: 0;
+}
+
+#inicio .carousel-item {
+    width: 100%;
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#inicio .carousel-item::before {
+    content: "";
+    background-color: rgba(22, 0, 51, 0.419);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+#inicio .carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#inicio .carousel-content {
+    text-align: center;
+}
+
+#inicio h2 {
+    color: #fff;
+    margin-bottom: 30px;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+#inicio h2 span {
+    background-color: #501E8B;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-weight: 800;
+}
+
+#inicio p {
+    animation-delay: 0.4s;
+    margin: 0 auto 70px auto;
+    color: #fff;
+    font-weight: 600;
+}
+
+#inicio .carousel-inner .carousel-item {
+    transition-property: opacity;
+    background-position: center top;
+}
+
+#inicio .carousel-inner .carousel-item,
+#inicio .carousel-inner .active.carousel-item-start,
+#inicio .carousel-inner .active.carousel-item-end {
+    opacity: 0;
+}
+
+#inicio .carousel-inner .active,
+#inicio .carousel-inner .carousel-item-next.carousel-item-start,
+#inicio .carousel-inner .carousel-item-prev.carousel-item-end {
+    opacity: 1;
+    transition: 0.5s;
+}
+
+#inicio .carousel-inner .carousel-item-next,
+#inicio .carousel-inner .carousel-item-prev,
+#inicio .carousel-inner .active.carousel-item-start,
+#inicio .carousel-inner .active.carousel-item-end {
+    left: 0;
+    transform: translate3d(0, 0, 0);
+}
+
+#inicio .carousel-control-next-icon,
+#inicio .carousel-control-prev-icon {
+    background: none;
+    font-size: 30px;
+    line-height: 0;
+    width: auto;
+    height: auto;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    transition: 0.3s;
+    color: rgba(255, 255, 255, 0.5);
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#inicio .carousel-control-next-icon:hover,
+#inicio .carousel-control-prev-icon:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#inicio .carousel-indicators li {
+    cursor: pointer;
+}
+
+#inicio .btn-menu,
+#inicio .btn-book {
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    transition: 0.5s;
+    line-height: 1;
+    margin: 0 10px;
+    margin-top: 10px;
+    animation-delay: 0.8s;
+    color: #fff;
+    background-color: #501e8b;
+}
+
+#inicio .btn-menu:hover,
+#inicio .btn-book:hover {
+    background: #461A7A;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    #inicio h2 {
+        font-size: 28px;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    #inicio .carousel-control-prev,
+    #inicio .carousel-control-next {
+        width: 5%;
+    }
+}
+
+main {
+    background-color: #E9E3F1;
+}
+
+p {
+    color: #461A7A;
+}
+
+.form-group p {
+    font-weight: 500;
+}
