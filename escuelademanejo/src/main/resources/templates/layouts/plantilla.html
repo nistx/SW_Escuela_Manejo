@@ -118,6 +118,25 @@
                             </li>
                         </ul>
                     </li>
+                    <!-- Cursos -->
+                    <li class="menu-item" th:classappend="${menuActivo == 'cur'} ? 'active open'">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-notepad"></i>
+                            <div>Cursos</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item" th:classappend="${itemActivo == 'cur_lista'} ? 'active'">
+                                <a th:href="@{/curso/listaCurso}" class="menu-link">
+                                    <div>Lista</div>
+                                </a>
+                            </li>
+                            <li class="menu-item" th:classappend="${itemActivo == 'cur_nuevo'} ? 'active'">
+                                <a th:href="@{/curso/nuevoCurso}" class="menu-link">
+                                    <div th:text="${SubItem != null ? SubItem : 'Nuevo Curso'}"></div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <!-- Vehículos -->
                     <li class="menu-item" th:classappend="${menuActivo == 'veh'} ? 'active open'">
                         <a th:href="@{/vehiculo/}" class="menu-link">

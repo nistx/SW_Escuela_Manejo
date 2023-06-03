@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="layouts/plantilla :: head"></head>
+
+<body>
+    <div class="layout-wrapper layout-content-navbar">
+
+        <div class="layout-container">
+            <aside th:replace="layouts/plantilla :: menu "></aside>
+
+            <div class="layout-page">
+                <nav th:replace="layouts/plantilla :: barra"></nav>
+
+                <div class="content-wrapper">
+
+                    <!-- Contenido -->
+                    <div class="container-xxl flex-grow-1 container-p-y">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form th:action="@{/curso/guardar}" th:object="${curso}" method="post">
+                                    <div class="card">
+                                        <h5 class="card-header" th:text="${SubItem != null ? SubItem : 'Nuevo Curso'}">
+                                        </h5>
+                                        <div class="card-body">
+                                            <input type="hidden" th:field="*{id}">
+                                            <!-- Descripción -->
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-3">
+                                                        <input th:field="*{descripcion}" type="text"
+                                                            class="form-control" id="floatingInput"
+                                                            placeholder="Paquete Completo"
+                                                            aria-describedby="floatingInputHelp" />
+                                                        <label for="floatingInput">Descripción</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Clases, Precio -->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3">
+                                                        <input th:field="*{clase}" type="text" class="form-control"
+                                                            id="floatingInput" placeholder="6"
+                                                            aria-describedby="floatingInputHelp" />
+                                                        <label for="floatingInput"># Clases</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3">
+                                                        <input th:field="*{precio}" type="text" class="form-control"
+                                                            id="floatingInput" placeholder="880"
+                                                            aria-describedby="floatingInputHelp" />
+                                                        <label for="floatingInput">Precio</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary">
+                                                <span class="tf-icons bx bx-save"></span>
+                                                Guardar
+                                            </button>
+
+                                        </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- / Contenido -->
+                    <div class="content-backdrop fade"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="layouts/plantilla :: librerias"></div>
+</body>
+
+</html>
