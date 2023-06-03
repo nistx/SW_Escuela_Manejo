@@ -5,18 +5,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/estudiante")
 public class EstudianteController {
-    @RequestMapping("/Dashboard/ListaEstudiante")
+    @RequestMapping("/listaEstudiante")
     public String estudiantes(Model model) {
         model.addAttribute("menuActivo", "estu");
         model.addAttribute("itemActivo", "estu_lista");
-        return "listaEstudiante";
+        return "estudiante/listaEstudiante";
     }
 
-    @RequestMapping("/Dashboard/NuevoEstudiante")
+    @RequestMapping("/nuevoEstudiante")
     public String nuevoEstudiante(Model model) {
         model.addAttribute("menuActivo", "estu");
         model.addAttribute("itemActivo", "estu_nuevo");
-        return "nuevoEstudiante";
+        return "estudiante/nuevoEstudiante";
     }
 }

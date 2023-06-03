@@ -5,18 +5,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/instructor")
 public class InstructorController {
-    @RequestMapping("/Dashboard/ListaInstructor")
+    @RequestMapping("/listaInstructor")
     public String intructores(Model model) {
         model.addAttribute("menuActivo", "inst");
         model.addAttribute("itemActivo", "inst_lista");
-        return "listaInstructor";
+        return "instructor/listaInstructor";
     }
 
-    @RequestMapping("/Dashboard/NuevoInstructor")
+    @RequestMapping("/nuevoInstructor")
     public String nuevoInstructor(Model model) {
         model.addAttribute("menuActivo", "inst");
         model.addAttribute("itemActivo", "inst_nuevo");
-        return "nuevoInstructor";
+        return "instructor/nuevoInstructor";
     }
 }

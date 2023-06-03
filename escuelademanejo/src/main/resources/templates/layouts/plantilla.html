@@ -54,7 +54,7 @@
                 <ul class="menu-inner py-1">
                     <!-- Inicio -->
                     <li class="menu-item" th:classappend="${menuActivo == 'ini'} ? 'active open'">
-                        <a th:href="@{/Dashboard/Inicio}" class="menu-link">
+                        <a th:href="@{/dashboard/inicio}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home"></i>
                             <div data-i18n="Analytics">Inicio</div>
                         </a>
@@ -68,12 +68,12 @@
 
                         <ul class="menu-sub">
                             <li class="menu-item" th:classappend="${itemActivo == 'clase_lista'} ? 'active'">
-                                <a th:href="@{/Dashboard/ListaClase}" class="menu-link">
+                                <a th:href="@{/clase/listaClase}" class="menu-link">
                                     <div>Lista</div>
                                 </a>
                             </li>
                             <li class="menu-item" th:classappend="${itemActivo == 'clase_nueva'} ? 'active'">
-                                <a th:href="@{/Dashboard/NuevaClase}" class="menu-link">
+                                <a th:href="@{/clase/nuevaClase}" class="menu-link">
                                     <div>Nueva Clase</div>
                                 </a>
                             </li>
@@ -87,12 +87,12 @@
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item" th:classappend="${itemActivo == 'estu_lista'} ? 'active'">
-                                <a th:href="@{/Dashboard/ListaEstudiante}" class="menu-link">
+                                <a th:href="@{/estudiante/listaEstudiante}" class="menu-link">
                                     <div>Lista</div>
                                 </a>
                             </li>
                             <li class="menu-item" th:classappend="${itemActivo == 'estu_nuevo'} ? 'active'">
-                                <a th:href="@{/Dashboard/NuevoEstudiante}" class="menu-link">
+                                <a th:href="@{/estudiante/nuevoEstudiante}" class="menu-link">
                                     <div>Nuevo Estudiante</div>
                                 </a>
                             </li>
@@ -106,12 +106,12 @@
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item" th:classappend="${itemActivo == 'inst_lista'} ? 'active'">
-                                <a th:href="@{/Dashboard/ListaInstructor}" class="menu-link">
+                                <a th:href="@{/instructor/listaInstructor}" class="menu-link">
                                     <div>Lista</div>
                                 </a>
                             </li>
                             <li class="menu-item" th:classappend="${itemActivo == 'inst_nuevo'} ? 'active'">
-                                <a th:href="@{/Dashboard/NuevoInstructor}" class="menu-link">
+                                <a th:href="@{/instructor/nuevoInstructor}" class="menu-link">
                                     <div>Nuevo Instructor</div>
                                 </a>
                             </li>
@@ -119,7 +119,7 @@
                     </li>
                     <!-- Vehículos -->
                     <li class="menu-item" th:classappend="${menuActivo == 'veh'} ? 'active open'">
-                        <a th:href="@{/Dashboard/Vehiculos}" class="menu-link">
+                        <a th:href="@{/vehiculo/}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-car"></i>
                             <div data-i18n="Analytics">Vehículos</div>
                         </a>
