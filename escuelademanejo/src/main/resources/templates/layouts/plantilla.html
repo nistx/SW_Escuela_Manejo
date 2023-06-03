@@ -93,7 +93,7 @@
                             </li>
                             <li class="menu-item" th:classappend="${itemActivo == 'estu_nuevo'} ? 'active'">
                                 <a th:href="@{/estudiante/nuevoEstudiante}" class="menu-link">
-                                    <div>Nuevo Estudiante</div>
+                                    <div th:text="${SubItem != null ? SubItem : 'Nuevo Estudiante'}"></div>
                                 </a>
                             </li>
                         </ul>

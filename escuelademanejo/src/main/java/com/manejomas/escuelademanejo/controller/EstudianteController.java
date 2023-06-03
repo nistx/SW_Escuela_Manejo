@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -42,5 +43,20 @@ public class EstudianteController {
     public String guardar(Estudiante estudiante) {
         estudianteService.guardarEstudiante(estudiante);
         return "redirect:/estudiante/listaEstudiante";
+    }
+
+    @RequestMapping("/mostrarEditar/{id}")
+    public String editar(@PathVariable(value = "id") Long id, Model model) {
+        model.addAttribute("menuActivo", "estu");
+        model.addAttribute("itemActivo", "estu_nuevo");
+
+        model.addAttribute("SubItem", "Editar Estudiante");
+
+        // Mostrar
+        Estudiante estudiante = new Estudiante();
+        estudiante = estudianteService.buscarEstudiante(id);
+        model.addAttribute("estudiante", estudiante);
+        model.addAttribute("listaEstudiantes", estudianteService.mostrarEstudiante());
+        return "estudiante/nuevoEstudiante";
     }
 }

@@ -8,4 +8,6 @@ public interface IEstudianteService {
     public void guardarEstudiante(Estudiante estudiante);
 
     public List<Estudiante> mostrarEstudiante();
+
+    public Estudiante buscarEstudiante(Long id);
 }

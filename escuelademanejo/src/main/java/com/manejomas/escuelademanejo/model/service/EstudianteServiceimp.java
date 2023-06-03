@@ -23,4 +23,9 @@ public class EstudianteServiceimp implements IEstudianteService {
         return (List<Estudiante>) estudianteDAO.findAll();
     };
 
+    @Override
+    public Estudiante buscarEstudiante(Long id) {
+        return estudianteDAO.findById(id).orElse(null);
+    }
+
 }
