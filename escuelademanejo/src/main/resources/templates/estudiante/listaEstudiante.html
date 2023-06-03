@@ -54,7 +54,9 @@
                               <i class="bx bx-edit-alt me-1"></i>
                               Editar
                             </a>
-                            <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
+                            <a class="dropdown-item" th:href="@{/estudiante/eliminar/} + ${item.id}"
+                              onclick="return showConfirmation(this.href)">
+                              <i class="bx bx-trash me-1"></i>
                               Eliminar</a>
                           </div>
                         </div>
@@ -138,6 +140,7 @@
   </div>
 
   <div th:replace="layouts/plantilla :: librerias"></div>
+  <script th:src="@{/js/alertas.js}"></script>
 </body>
 
 </html>

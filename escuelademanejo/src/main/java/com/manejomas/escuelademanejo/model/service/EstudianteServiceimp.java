@@ -28,4 +28,9 @@ public class EstudianteServiceimp implements IEstudianteService {
         return estudianteDAO.findById(id).orElse(null);
     }
 
+    @Override
+    public void eliminarEstudiante(Long id) {
+        estudianteDAO.deleteById(id);
+    }
+
 }

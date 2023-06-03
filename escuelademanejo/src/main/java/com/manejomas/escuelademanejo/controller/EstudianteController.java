@@ -59,4 +59,10 @@ public class EstudianteController {
         model.addAttribute("listaEstudiantes", estudianteService.mostrarEstudiante());
         return "estudiante/nuevoEstudiante";
     }
+
+    @RequestMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable(value = "id") Long id) {
+        estudianteService.eliminarEstudiante(id);
+        return "redirect:/estudiante/listaEstudiante";
+    }
 }

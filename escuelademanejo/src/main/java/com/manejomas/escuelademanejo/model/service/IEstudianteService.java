@@ -10,4 +10,6 @@ public interface IEstudianteService {
     public List<Estudiante> mostrarEstudiante();
 
     public Estudiante buscarEstudiante(Long id);
+
+    public void eliminarEstudiante(Long id);
 }
