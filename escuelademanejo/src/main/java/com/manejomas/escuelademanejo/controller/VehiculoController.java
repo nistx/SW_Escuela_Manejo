@@ -5,10 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class DashboardController {
-    @RequestMapping("/Dashboard/Inicio")
-    public String home(Model model) {
-        model.addAttribute("menuActivo", "ini");
-        return "inicio";
+public class VehiculoController {
+    @RequestMapping("/Dashboard/Vehiculos")
+    public String vehiculo(Model model) {
+        model.addAttribute("menuActivo", "veh");
+        return "vehiculos";
     }
 }

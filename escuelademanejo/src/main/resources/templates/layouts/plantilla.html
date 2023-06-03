@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Dashboard</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" th:href="@{/img/Logo-Negro.svg}" />
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
+
+    <!-- BoxiIcons -->
+    <link rel="stylesheet" th:href="@{/css/boxicons.css}" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" th:href="@{/css/core.css}" class="template-customizer-core-css" />
+    <link rel="stylesheet" th:href="@{/css/theme-default.css}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" th:href="@{/css/demo.css}" />
+
+    <!-- Helpers -->
+    <script th:src="@{/js/helpers.js}"></script>
+
+</head>
+
+<body>
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+            <!-- Menu -->
+            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" th:fragment="menu">
+                <div class="app-brand demo">
+                    <a th:href="@{/Dashboard/Inicio}" class="app-brand-link">
+                        <span class="app-brand-logo demo">
+                            <img th:src="@{/img/Logo-Negro.svg}" alt="logo" style="height: 40px;">
+                        </span>
+                    </a>
+
+                    <a href="javascript:void(0);"
+                        class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+                        <i class="bx bx-chevron-left bx-sm align-middle"></i>
+                    </a>
+                </div>
+
+                <ul class="menu-inner py-1">
+                    <!-- Inicio -->
+                    <li class="menu-item" th:classappend="${menuActivo == 'ini'} ? 'active open'">
+                        <a th:href="@{/Dashboard/Inicio}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-home"></i>
+                            <div data-i18n="Analytics">Inicio</div>
+                        </a>
+                    </li>
+                    <!-- Clases -->
+                    <li class="menu-item" th:classappend="${menuActivo == 'clase'} ? 'active open'">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-book"></i>
+                            <div>Clases</div>
+                        </a>
+
+                        <ul class="menu-sub">
+                            <li class="menu-item" th:classappend="${itemActivo == 'clase_lista'} ? 'active'">
+                                <a th:href="@{/Dashboard/ListaClase}" class="menu-link">
+                                    <div>Lista</div>
+                                </a>
+                            </li>
+                            <li class="menu-item" th:classappend="${itemActivo == 'clase_nueva'} ? 'active'">
+                                <a th:href="@{/Dashboard/NuevaClase}" class="menu-link">
+                                    <div>Nueva Clase</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Estudiantes -->
+                    <li class="menu-item" th:classappend="${menuActivo == 'estu'} ? 'active open'">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-group"></i>
+                            <div>Estudiantes</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item" th:classappend="${itemActivo == 'estu_lista'} ? 'active'">
+                                <a th:href="@{/Dashboard/ListaEstudiante}" class="menu-link">
+                                    <div>Lista</div>
+                                </a>
+                            </li>
+                            <li class="menu-item" th:classappend="${itemActivo == 'estu_nuevo'} ? 'active'">
+                                <a th:href="@{/Dashboard/NuevoEstudiante}" class="menu-link">
+                                    <div>Nuevo Estudiante</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Instructores -->
+                    <li class="menu-item" th:classappend="${menuActivo == 'inst'} ? 'active open'">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-user"></i>
+                            <div>Instructores</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item" th:classappend="${itemActivo == 'inst_lista'} ? 'active'">
+                                <a th:href="@{/Dashboard/ListaInstructor}" class="menu-link">
+                                    <div>Lista</div>
+                                </a>
+                            </li>
+                            <li class="menu-item" th:classappend="${itemActivo == 'inst_nuevo'} ? 'active'">
+                                <a th:href="@{/Dashboard/NuevoInstructor}" class="menu-link">
+                                    <div>Nuevo Instructor</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Vehículos -->
+                    <li class="menu-item" th:classappend="${menuActivo == 'veh'} ? 'active open'">
+                        <a th:href="@{/Dashboard/Vehiculos}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-car"></i>
+                            <div data-i18n="Analytics">Vehículos</div>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            <!-- / Menu -->
+
+            <!-- Contenido -->
+            <div class="layout-page">
+                <!-- Navbar -->
+                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                    id="layout-navbar" th:fragment="barra">
+                    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                            <i class="bx bx-menu bx-sm"></i>
+                        </a>
+                    </div>
+
+                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                        <ul class="navbar-nav flex-row align-items-center ms-auto">
+                            <!-- Usuario -->
+                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
+                                    data-bs-toggle="dropdown">
+                                    <div class="avatar avatar-online">
+                                        <img src="/img/usuario.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <div class="avatar avatar-online">
+                                                        <img src="/img/usuario.jpg" alt
+                                                            class="w-px-40 h-auto rounded-circle" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <span class="fw-semibold d-block">Usuario1</span>
+                                                    <small class="text-muted">Administrador</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="bx bx-user me-2"></i>
+                                            <span class="align-middle">Mi Perfil</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" th:href="@{/login}">
+                                            <i class="bx bx-power-off me-2"></i>
+                                            <span class="align-middle">Cerrar Sesión</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--/ Usuario -->
+                        </ul>
+                    </div>
+                </nav>
+
+                <!-- Content wrapper -->
+                <div class="content-wrapper">
+                    <!-- Content -->
+                    <div class="container-xxl flex-grow-1 container-p-y">
+                        <div class="layout-demo-wrapper">
+                            <div class="layout-demo-info">
+                                <h4>Lista Clase</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Content -->
+                    <div class="content-backdrop fade"></div>
+                </div>
+                <!-- Content wrapper -->
+            </div>
+        </div>
+    </div>
+
+    <div th:fragment="librerias">
+        <!-- Core JS -->
+        <!-- build:js assets/vendor/js/core.js -->
+        <script th:src="@{/js/jquery.js}"></script>
+        <script th:src="@{/js/popper.js}"></script>
+        <script th:src="@{/js/bootstrap.js}"></script>
+        <script th:src="@{/js/menu.js}"></script>
+        <!-- endbuild -->
+
+        <!-- Vendors JS -->
+
+        <!-- Main JS -->
+        <script th:src="@{/js/main-dashboard.js}"></script>
+
+        <!-- Page JS -->
+
+        <!-- Place this tag in your head or just before your close body tag. -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+    </div>
+</body>
+
+</html>
