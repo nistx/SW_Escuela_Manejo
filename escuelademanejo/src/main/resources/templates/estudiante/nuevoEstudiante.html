@@ -19,72 +19,73 @@
 
             <div class="row">
               <div class="col-md-12">
-                <div class="card mb-4">
-                  <h5 class="card-header">Nuevo Estudiante</h5>
+                <form th:action="@{/estudiante/guardar}" th:object="${estudiante}" method="post">
+                  <div class="card">
+                    <h5 class="card-header">Nuevo Estudiante</h5>
+                    <div class="card-body">
+                      <!-- Nombres y Apellidos -->
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-floating mb-3">
+                            <input th:field="*{nombre}" type="text" class="form-control" id="floatingInput"
+                              placeholder="Juan Carlos" aria-describedby="floatingInputHelp" />
+                            <label for="floatingInput">Nombres</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-floating mb-3">
+                            <input th:field="*{apellido}" type="text" class="form-control" id="floatingInput"
+                              placeholder="Perez Gomez" aria-describedby="floatingInputHelp" />
+                            <label for="floatingInput">Apellidos</label>
+                          </div>
+                        </div>
+                      </div>
 
-                  <div class="card-body">
-                    <!-- Nombres y Apellidos -->
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="floatingInput" placeholder="Juan Carlos"
-                            aria-describedby="floatingInputHelp" />
-                          <label for="floatingInput">Nombres</label>
+                      <!-- DNI , Teléfono y Dirección -->
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="form-floating mb-3">
+                            <input th:field="*{dni}" type="text" class="form-control" id="floatingInput"
+                              placeholder="74142174" aria-describedby="floatingInputHelp" />
+                            <label for="floatingInput">DNI</label>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-floating mb-3">
+                            <input th:field="*{telefono}" type="text" class="form-control" id="floatingInput"
+                              placeholder="999341050" aria-describedby="floatingInputHelp" />
+                            <label for="floatingInput">Teléfono</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-floating mb-3">
+                            <input th:field="*{direccion}" type="text" class="form-control" id="floatingInput"
+                              placeholder="Av. Simón Bolívar 850, Pueblo Libre" aria-describedby="floatingInputHelp" />
+                            <label for="floatingInput">Dirección</label>
+                          </div>
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="floatingInput" placeholder="Perez Gomez"
-                            aria-describedby="floatingInputHelp" />
-                          <label for="floatingInput">Apellidos</label>
-                        </div>
-                      </div>
+
+                      <button type="submit" class="btn btn-primary">
+                        <span class="tf-icons bx bx-save"></span>
+                        Guardar
+                      </button>
+
                     </div>
+                </form>
 
-                    <!-- DNI , Teléfono y Dirección -->
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="floatingInput" placeholder="74142174"
-                            aria-describedby="floatingInputHelp" />
-                          <label for="floatingInput">DNI</label>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="floatingInput" placeholder="999341050"
-                            aria-describedby="floatingInputHelp" />
-                          <label for="floatingInput">Teléfono</label>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="floatingInput"
-                            placeholder="Av. Simón Bolívar 850, Pueblo Libre" aria-describedby="floatingInputHelp" />
-                          <label for="floatingInput">Dirección</label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <button type="button" class="btn btn-primary">
-                      <span class="tf-icons bx bx-pie-chart-alt"></span>
-                      Guardar
-                    </button>
-
-                  </div>
-
-                </div>
               </div>
             </div>
-
-            <!-- / Contenido -->
-            <div class="content-backdrop fade"></div>
           </div>
+
+          <!-- / Contenido -->
+          <div class="content-backdrop fade"></div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div th:replace="layouts/plantilla :: librerias"></div>
+  <div th:replace="layouts/plantilla :: librerias"></div>
 </body>
 
 </html>
