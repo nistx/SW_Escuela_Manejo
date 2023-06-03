@@ -3,6 +3,8 @@ package com.manejomas.escuelademanejo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.manejomas.escuelademanejo.model.entidad.Estudiante;
@@ -18,23 +20,27 @@ public class EstudianteController {
     public String estudiantes(Model model) {
         model.addAttribute("menuActivo", "estu");
         model.addAttribute("itemActivo", "estu_lista");
+
+        // Listar Estudiante
+        model.addAttribute("listaEstudiantes", estudianteService.mostrarEstudiante());
         return "estudiante/listaEstudiante";
     }
 
-    @RequestMapping("/nuevoEstudiante")
+    @GetMapping("/nuevoEstudiante")
     public String nuevoEstudiante(Model model) {
+        model.addAttribute("menuActivo", "estu");
+        model.addAttribute("itemActivo", "estu_nuevo");
+
         // Guardar Estudiante
         Estudiante estudiante = new Estudiante();
         model.addAttribute("estudiante", estudiante);
 
-        model.addAttribute("menuActivo", "estu");
-        model.addAttribute("itemActivo", "estu_nuevo");
         return "estudiante/nuevoEstudiante";
     }
 
-    @RequestMapping("/guardar")
+    @PostMapping("/guardar")
     public String guardar(Estudiante estudiante) {
         estudianteService.guardarEstudiante(estudiante);
-        return "redirect:/estudiante/nuevoEstudiante";
+        return "redirect:/estudiante/listaEstudiante";
     }
 }

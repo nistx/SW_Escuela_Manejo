@@ -1,5 +1,7 @@
 package com.manejomas.escuelademanejo.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,10 @@ public class EstudianteServiceimp implements IEstudianteService {
     public void guardarEstudiante(Estudiante estudiante) {
         estudianteDAO.save(estudiante);
     }
+
+    @Override
+    public List<Estudiante> mostrarEstudiante() {
+        return (List<Estudiante>) estudianteDAO.findAll();
+    };
 
 }
