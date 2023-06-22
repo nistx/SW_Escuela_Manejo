@@ -16,13 +16,13 @@ public class InstructorController {
 
     @Autowired
     private IInstructorService instructorService;
+    Instructor instructor = new Instructor();
 
     @RequestMapping("/listaInstructor")
     public String intructores(Model model) {
         model.addAttribute("menuActivo", "inst");
         model.addAttribute("itemActivo", "inst_lista");
 
-        Instructor instructor = new Instructor();
         model.addAttribute("instructor", instructor);
         model.addAttribute("listaInstructores", instructorService.mostrarInstructor());
         return "instructor/listaInstructor";
@@ -46,6 +46,7 @@ public class InstructorController {
         model.addAttribute("menuActivo", "inst");
         model.addAttribute("itemActivo", "inst_nuevo");
 
+        model.addAttribute("instructor", instructor);
         return "instructor/nuevoInstructor";
     }
 }
