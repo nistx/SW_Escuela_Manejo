@@ -48,7 +48,7 @@
                                                         </a>
                                                         <a class="dropdown-item"
                                                             th:href="@{/curso/eliminar/} + ${item.id}"
-                                                            onclick="return eliminarCurso(this.href)">
+                                                            onclick="return showConfirmation(this.href,'El curso')">
                                                             <i class="bx bx-trash me-1"></i>
                                                             Eliminar</a>
                                                     </div>

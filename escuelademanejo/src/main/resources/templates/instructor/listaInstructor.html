@@ -12,19 +12,123 @@
       <div class="layout-page">
         <nav th:replace="layouts/plantilla :: barra"></nav>
 
-        <div class="content-wrapper">
+        <!-- Contenido -->
 
-          <!-- Contenido -->
+        <!-- Tabla -->
+        <div class="content-wrapper">
           <div class="container-xxl flex-grow-1 container-p-y">
-            <div class="layout-demo-wrapper">
-              <div class="layout-demo-info">
-                <h4>Lista Instructor</h4>
+            <div class="card">
+              <h5 class="card-header">Lista de Instructores</h5>
+              <div class="table-responsive text-nowrap">
+                <table class="table table-hover table-striped">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Apellido</th>
+                      <th>DNI</th>
+                      <th>Telefono</th>
+                      <th>Direccion</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-border-bottom-0">
+                    <tr th:each="item: ${listaInstructores}">
+                      <td th:text="${item.nombre}"></td>
+                      <td th:text="${item.apellido}"></td>
+                      <td th:text="${item.dni}"></td>
+                      <td th:text="${item.telefono}"></td>
+                      <td th:text="${item.direccion}"></td>
+                      <td>
+                        <div class="dropdown">
+                          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                          </button>
+                          <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item editarInstructor" th:data-id="${item.id}"
+                              th:data-nombre="${item.nombre}" th:data-apellido="${item.apellido}"
+                              th:data-dni="${item.dni}" th:data-telefono="${item.telefono}"
+                              th:data-direccion="${item.direccion}">
+                              <i class="bx bx-edit-alt me-1"></i>
+                              Editar
+
+                            </a>
+                            <a class="dropdown-item" th:href="@{/instructor/eliminar/} + ${item.id}"
+                              onclick="return showConfirmation(this.href, 'El instructor')">
+                              <i class="bx bx-trash me-1"></i>
+                              Eliminar</a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-          <!-- / Contenido -->
           <div class="content-backdrop fade"></div>
         </div>
+        <!-- Contenido -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalInstructor" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Editar Instructor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <form th:action="@{/instructor/guardar}" th:object="${instructor}" method="post">
+                <div class="modal-body">
+                  <!-- Nombre y Apellidos -->
+                  <input type="hidden" th:field="*{id}" />
+                  <div class="row g-2">
+                    <div class="col mb-3">
+                      <label class="form-label">Nombre</label>
+                      <input type="text" name="nombre" id="txtNombre" class="form-control" placeholder="Juan Carlos" />
+                    </div>
+                    <div class="col mb-3">
+                      <label class="form-label">Apellido</label>
+                      <input type="text" name="apellido" id="txtApellido" class="form-control"
+                        placeholder="Perez Gomez" />
+                    </div>
+                  </div>
+
+                  <!-- DNI y Teléfono -->
+                  <div class="row g-2">
+                    <div class="col mb-3">
+                      <label class="form-label">DNI</label>
+                      <input type="text" name="dni" id="txtDni" class="form-control" placeholder="74142174" />
+                    </div>
+                    <div class="col mb-3">
+                      <label class="form-label">Teléfono</label>
+                      <input type="text" name="telefono" id="txtTelefono" class="form-control"
+                        placeholder="999341050" />
+                    </div>
+                  </div>
+
+                  <!-- Dirección -->
+                  <div class="row">
+                    <div class="col mb-0">
+                      <label class="form-label">Dirección</label>
+                      <input type="text" name="direccion" id="txtDireccion" class="form-control"
+                        placeholder="Av. Simón Bolívar 850, Pueblo Libre" />
+                    </div>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Cerrar
+                  </button>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+
       </div>
     </div>
   </div>
