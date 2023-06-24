@@ -29,6 +29,11 @@ public class EstudianteServiceimp implements IEstudianteService {
     }
 
     @Override
+    public List<Estudiante> buscarEstudianteDNI(String dni) {
+        return estudianteDAO.findByDni(dni);
+    }
+
+    @Override
     public void eliminarEstudiante(Long id) {
         estudianteDAO.deleteById(id);
     }

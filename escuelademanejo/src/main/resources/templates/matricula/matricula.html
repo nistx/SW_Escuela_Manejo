@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="layouts/plantilla :: head"></head>
+
+<body>
+    <div class="layout-wrapper layout-content-navbar">
+
+        <div class="layout-container">
+            <aside th:replace="layouts/plantilla :: menu "></aside>
+
+            <div class="layout-page">
+                <nav th:replace="layouts/plantilla :: barra"></nav>
+
+                <div class="content-wrapper">
+
+                    <!-- Contenido -->
+                    <div class="container-xxl flex-grow-1 container-p-y">
+
+                        <!-- Form controls -->
+                        <div class="col-md-12">
+                            <div class="card mb-4">
+                                <h5 class="card-header">Matrícula</h5>
+                                <div class="card-body">
+
+                                    <form th:action="@{/matricula/}">
+                                        <div>
+                                            <label for="Estudiante" class="form-label">Estudiante</label>
+                                            <div>
+                                                <div class="row">
+                                                    <div class="col-lg-2 mb-3">
+                                                        <input type="text" class="form-control" id="txtDNI" name="dni"
+                                                            placeholder="74142174" />
+                                                    </div>
+                                                    <div class="col-lg-3 mb-3">
+                                                        <button type="submit" class="btn btn-primary" value="buscar">
+                                                            <span class="tf-icons bx bx-search"></span>
+                                                            Buscar DNI
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </form>
+
+                                    <form th:action="@{/matricula/guardar}" th:object="${matricula}" method="post">
+
+                                        <div class="mb-3" th:each="item : ${estudiante}">
+                                            <input type="text" th:value="${item.id}" id="txtEstudiante"
+                                                name="estudiante.id" hidden />
+                                            <input type="text" class="form-control"
+                                                th:value="${item.nombre} + ' '+ ${item.apellido}" />
+                                        </div>
+
+                                        <div class=" mb-4">
+                                            <label for="cboCurso" class="form-label">Curso</label>
+                                            <select class="form-select" id="cboCurso" aria-label="Seleccione una opcion"
+                                                th:field="*{curso.id}">
+                                                <option value="" selected>Seleccione una opción</option>
+                                                <option th:each="item: ${listaCursos}" th:text="${item.descripcion}"
+                                                    th:value="${item.id}"></option>
+                                            </select>
+                                        </div>
+
+                                        <div class=" mb-4">
+                                            <label for="cboTipo" class="form-label">Tipo Auto</label>
+                                            <select class="form-select" id="cboTipo" aria-label="Seleccione una opcion"
+                                                th:field="*{tipo.id}">
+                                                <option value="" selected>Seleccione una opción</option>
+                                                <option th:each="item: ${listaTipos}" th:text="${item}"
+                                                    th:value="${item.id}"></option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-check mb-4">
+                                            <input class="form-check-input" type="checkbox" value="0" id="chkRecogida"
+                                                th:field="*{esRecogido}" onclick="changeCheckboxValue(this)" />
+                                            <label class="form-check-label" for="defaultCheck1"> Recogida
+                                            </label>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">
+                                            <span class="tf-icons bx bx-save"></span>
+                                            Registrar
+                                        </button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- / Contenido -->
+                    <div class="content-backdrop fade"></div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="layouts/plantilla :: librerias"></div>
+    <script th:inline="javascript">
+        function changeCheckboxValue(checkbox) {
+            if (checkbox.checked) {
+                checkbox.value = '1';
+            } else {
+                checkbox.value = '0';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -60,6 +60,15 @@
                             <div data-i18n="Analytics">Inicio</div>
                         </a>
                     </li>
+
+                    <!-- Inicio -->
+                    <li class="menu-item" th:classappend="${menuActivo == 'matri'} ? 'active open'">
+                        <a th:href="@{/matricula/}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-book-add"></i>
+                            <div data-i18n="Analytics">Matrícula</div>
+                        </a>
+                    </li>
+
                     <!-- Clases -->
                     <li class="menu-item" th:classappend="${menuActivo == 'clase'} ? 'active open'">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">

@@ -18,3 +18,16 @@ function showConfirmation(link, mensaje) {
   });
   return false;
 }
+
+function showError() {
+  if (resta === 0) {
+    Swal.fire({
+      icon: "warning",
+      title: "No se puede registrar",
+      text: "No tiene más clases disponibles",
+      confirmButtonText: "OK",
+    });
+    return false; // Evita que el formulario se envíe
+  }
+  return true; // Permite que el formulario se envíe si la resta no es cero
+}

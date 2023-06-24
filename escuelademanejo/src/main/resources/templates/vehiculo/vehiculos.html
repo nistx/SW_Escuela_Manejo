@@ -16,20 +16,73 @@
 
           <!-- Contenido -->
           <div class="container-xxl flex-grow-1 container-p-y">
-            <div class="layout-demo-wrapper">
-              <div class="layout-demo-info">
-                <h4>Vehículos</h4>
+
+            <!-- Form controls -->
+            <div class="col-md-12">
+              <div class="card mb-4">
+                <h5 class="card-header">Vehículo</h5>
+                <div class="card-body">
+                  <form th:action="@{/vehiculo/guardar}" th:object="${vehiculo}" method="post">
+                    <div class="mb-3">
+                      <label for="placa" class="form-label">Placa</label>
+                      <input type="text" class="form-control" id="txtPlaca" placeholder="AJG351" th:field="*{placa}" />
+                    </div>
+
+                    <div class=" mb-4">
+                      <label for="cboTransmision" class="form-label">Modelo</label>
+                      <select class="form-select" id="cboModelo" aria-label="Seleccione una opcion"
+                        th:field="*{tipo.id}">
+                        <option value="0" selected>Seleccione una opción</option>
+                        <option th:each="item: ${listaTipos}" th:text="${item}" th:value="${item.id}"></option>
+                      </select>
+                    </div>
+
+                    <div class=" mb-4">
+                      <label for="cboTransmision" class="form-label">Transmisión</label>
+                      <select th:field="*{transmision}" class="form-select" id="cboTransmision"
+                        aria-label="Seleccione una opcion">
+                        <option value="0" selected>Seleccione una opción</option>
+                        <option value="Automático">Automático</option>
+                        <option value="Mecánico">Mecánico</option>
+                      </select>
+                    </div>
+
+                    <div class="form-check mb-4">
+                      <input class="form-check-input" type="checkbox" value="0" id="chkEstudiante"
+                        th:field="*{carroEstu}" onclick="changeCheckboxValue(this)" />
+                      <label class="form-check-label" for="defaultCheck1"> Carro Estudiante </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                      <span class="tf-icons bx bx-save"></span>
+                      Registrar
+                    </button>
+
+                  </form>
+                </div>
               </div>
             </div>
+
+
           </div>
           <!-- / Contenido -->
           <div class="content-backdrop fade"></div>
         </div>
+
       </div>
     </div>
   </div>
 
   <div th:replace="layouts/plantilla :: librerias"></div>
+  <script th:inline="javascript">
+    function changeCheckboxValue(checkbox) {
+      if (checkbox.checked) {
+        checkbox.value = '1';
+      } else {
+        checkbox.value = '0';
+      }
+    }
+  </script>
 </body>
 
 </html>

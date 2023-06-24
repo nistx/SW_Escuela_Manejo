@@ -11,5 +11,7 @@ public interface IEstudianteService {
 
     public Estudiante buscarEstudiante(Long id);
 
+    public List<Estudiante> buscarEstudianteDNI(String dni);
+
     public void eliminarEstudiante(Long id);
 }

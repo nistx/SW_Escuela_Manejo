@@ -16,11 +16,89 @@
 
           <!-- Contenido -->
           <div class="container-xxl flex-grow-1 container-p-y">
-            <div class="layout-demo-wrapper">
-              <div class="layout-demo-info">
-                <h4>Nueva Clase</h4>
+
+            <!-- Form controls -->
+            <div class="col-md-12">
+              <div class="card mb-4">
+                <h5 class="card-header">Clase</h5>
+                <div class="card-body">
+
+                  <form th:action="@{/clase/nuevaClase}">
+                    <div>
+                      <label for="Estudiante" class="form-label">Estudiante</label>
+                      <div>
+                        <div class="row">
+                          <div class="col-lg-2 mb-3">
+                            <input type="text" class="form-control" id="txtDNI" name="dni" placeholder="74142174" />
+                          </div>
+                          <div class="col-lg-3 mb-3">
+                            <button type="submit" class="btn btn-primary" value="buscar">
+                              <span class="tf-icons bx bx-search"></span>
+                              Buscar DNI
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+
+                  <form th:action="@{/clase/guardar}" th:object="${clase}" method="post">
+
+                    <div class="mb-3" th:each="item : ${estudiante}">
+                      <input type="text" th:value="${item.id}" id="txtEstudiante" name="estudiante.id" hidden />
+                      <input type="text" class="form-control" th:value="${item.nombre} + ' '+ ${item.apellido}" />
+                    </div>
+
+                    <div class="mb-3" th:each="matricula : ${matricula}">
+                      <div class="row">
+
+                        <div class="col-lg-6 mb-2">
+                          <label for="Curso" class="form-label">Curso Actual</label>
+                          <input type="text" th:value="${matricula.id}" id="txtCurso" name="matricula.curso.id"
+                            hidden />
+                          <input type="text" class="form-control" th:value="${matricula.curso.descripcion}" />
+                        </div>
+
+                        <div class="col-lg-2 mb-2">
+                          <label for="Clases" class="form-label"># Clases</label>
+                          <input type="text" class="form-control" id="num1" th:value="${matricula.curso.clase}" />
+                        </div>
+
+                        <div class="col-lg-2">
+                          <label for="Clases" class="form-label"># Clases Tomadas</label>
+                          <input type="text" class="form-control" id="num2" th:value="${numClasesRestantes}" />
+                        </div>
+
+                        <div class="col-lg-2">
+                          <label for="Clases" class="form-label"># Clases Restantes</label>
+                          <input type="text" class="form-control" id="resta" />
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div class=" mb-4">
+                      <label for="cboInstructor" class="form-label">Instructor</label>
+                      <select class="form-select" id="cboInstructor" aria-label="Seleccione una opción"
+                        th:field="*{instructor.id}">
+                        <option value="0" selected>Seleccione una opción</option>
+                        <option th:each="item: ${listaInstructor}" th:text="${item.nombre} + ' '+ ${item.apellido}"
+                          th:value="${item.id}">
+                        </option>
+                      </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" onclick="return showError()">
+                      <span class="tf-icons bx bx-save"></span>
+                      Registrar
+                    </button>
+
+                  </form>
+                </div>
               </div>
             </div>
+
+
           </div>
           <!-- / Contenido -->
           <div class="content-backdrop fade"></div>
@@ -30,6 +108,14 @@
   </div>
 
   <div th:replace="layouts/plantilla :: librerias"></div>
+  <script>
+    var num1 = parseInt(document.getElementById('num1').value);
+    var num2 = parseInt(document.getElementById('num2').value);
+    var resta = num1 - num2;
+    document.getElementById('resta').value = resta;
+
+    showError();
+  </script>
 </body>
 
 </html>
