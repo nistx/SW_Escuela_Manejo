@@ -26,6 +26,12 @@ public class Vehiculo implements Serializable {
     @JoinColumn(name = "tipo_id")
     Tipo tipo;
 
+    @Column(name = "veh_marca")
+    private String marca;
+
+    @Column(name = "veh_modelo")
+    private String modelo;
+
     @Column(name = "veh_transmision")
     private String transmision;
 
@@ -70,6 +76,22 @@ public class Vehiculo implements Serializable {
 
     public void setCarroEstu(String carroEstu) {
         this.carroEstu = carroEstu;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
 
 }

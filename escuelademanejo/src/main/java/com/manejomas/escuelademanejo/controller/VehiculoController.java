@@ -25,6 +25,7 @@ public class VehiculoController {
         model.addAttribute("vehiculo", vehiculo);
         model.addAttribute("menuActivo", "veh");
         model.addAttribute("listaTipos", tipoService.mostrarTipo());
+        model.addAttribute("listaVehiculos", vehiculoService.mostrarVehiculo());
         return "vehiculo/vehiculos";
     }
 

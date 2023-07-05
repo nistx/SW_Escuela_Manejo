@@ -46,32 +46,64 @@
 
                     <div class="mb-3" th:each="item : ${estudiante}">
                       <input type="text" th:value="${item.id}" id="txtEstudiante" name="estudiante.id" hidden />
-                      <input type="text" class="form-control" th:value="${item.nombre} + ' '+ ${item.apellido}" />
+                      <input type="text" class="form-control" th:value="${item.nombre} + ' '+ ${item.apellido}"
+                        readonly />
                     </div>
 
-                    <div class="mb-3" th:each="matricula : ${matricula}">
-                      <div class="row">
+                    <div th:each="matricula : ${matricula}">
+                      <div class="row mb-2">
 
                         <div class="col-lg-6 mb-2">
                           <label for="Curso" class="form-label">Curso Actual</label>
-                          <input type="text" th:value="${matricula.id}" id="txtCurso" name="matricula.curso.id"
-                            hidden />
-                          <input type="text" class="form-control" th:value="${matricula.curso.descripcion}" />
+                          <input type="text" th:value="${matricula.id}" id="txtCurso" name="matricula.id" hidden />
+                          <input type="text" class="form-control" th:value="${matricula.curso.descripcion}" readonly />
                         </div>
 
                         <div class="col-lg-2 mb-2">
                           <label for="Clases" class="form-label"># Clases</label>
-                          <input type="text" class="form-control" id="num1" th:value="${matricula.curso.clase}" />
+                          <input type="text" class="form-control" id="num1" th:value="${matricula.curso.clase}"
+                            readonly />
                         </div>
 
-                        <div class="col-lg-2">
+                        <div class="col-lg-2 mb-2">
                           <label for="Clases" class="form-label"># Clases Tomadas</label>
-                          <input type="text" class="form-control" id="num2" th:value="${numClasesRestantes}" />
+                          <input type="text" class="form-control" id="num2" th:value="${numClasesRestantes}" readonly />
                         </div>
 
-                        <div class="col-lg-2">
+                        <div class="col-lg-2 ">
                           <label for="Clases" class="form-label"># Clases Restantes</label>
-                          <input type="text" class="form-control" id="resta" />
+                          <input type="text" class="form-control" id="resta" readonly />
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col-lg-3 mb-2">
+                          <label for="Fecha" class="col-md-2 form-label">Fecha</label>
+                          <input class="form-control" type="date" th:field="*{fecha_registro}" id="fechaClase" />
+                        </div>
+
+                        <div class="col-lg-3 mb-2">
+                          <label for="cboHorario" class="form-label">Horario</label>
+                          <select class="form-select" id="cboHorario" aria-label="Seleccione una opción"
+                            th:field="*{horario.id}">
+                            <option value="0" selected>Seleccione una opción</option>
+                            <option th:each="item: ${listaHorario}"
+                              th:text="${item.hora_inicio} + ' - '+ ${item.hora_fin}" th:value="${item.id}">
+                            </option>
+                          </select>
+                        </div>
+
+                        <div class="col-lg-3">
+                          <label for="cboVehiculo" class="form-label">Vehículo</label>
+                          <select class="form-select" id="cboVehiculo" aria-label="Seleccione una opcion"
+                            th:field="*{vehiculo.id}">
+                            <option value="0" selected>Seleccione una opción</option>
+                            <option th:each="item: ${listaVehiculo}" th:text="${item.marca} + ' ' + ${item.modelo}"
+                              th:value="${item.id}"></option>
+                          </select>
                         </div>
 
                       </div>
@@ -109,12 +141,21 @@
 
   <div th:replace="layouts/plantilla :: librerias"></div>
   <script>
+    // Funcion para mostrar mensaje de error
     var num1 = parseInt(document.getElementById('num1').value);
     var num2 = parseInt(document.getElementById('num2').value);
     var resta = num1 - num2;
     document.getElementById('resta').value = resta;
-
     showError();
+
+    // Cambiar value de la fecha
+    var fechaInput = document.getElementById('fechaClase');
+
+    fechaInput.addEventListener('change', function () {
+      var fechaSeleccionada = fechaInput.value;
+      fechaInput.setAttribute('value', fechaSeleccionada);
+    });
+
   </script>
 </body>
 

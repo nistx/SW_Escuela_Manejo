@@ -42,6 +42,8 @@ public class MatriculaController {
         model.addAttribute("estudiante", estudianteService.buscarEstudianteDNI(dni));
         model.addAttribute("dni", dni);
 
+        model.addAttribute("listaMatricula", matriculaService.mostrarMatricula());
+
         return "matricula/matricula";
     }
 

@@ -1,5 +1,7 @@
 package com.manejomas.escuelademanejo.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,4 +20,15 @@ public class VehiculoServiceImp implements IVehiculoService {
         }
         vehiculoDAO.save(vehiculo);
     }
+
+    @Override
+    public List<Vehiculo> listarVehiculo(String matriId) {
+        return (List<Vehiculo>) vehiculoDAO.listarVehiculo(matriId);
+    }
+
+    @Override
+    public List<Vehiculo> mostrarVehiculo() {
+        return (List<Vehiculo>) vehiculoDAO.findAll();
+    }
+
 }

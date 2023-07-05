@@ -3,6 +3,8 @@ package com.manejomas.escuelademanejo.model.entidad;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,11 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "clase")
@@ -36,19 +34,13 @@ public class Clase implements Serializable {
     @JoinColumn(name = "veh_id")
     Vehiculo vehiculo;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "cla_fecha")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fecha_registro;
 
     @ManyToOne
     @JoinColumn(name = "hor_id")
     Horario horario;
-
-    @PrePersist
-    @PreUpdate
-    public void asignarFecha() {
-        fecha_registro = new Date();
-    }
 
     public Long getId() {
         return id;

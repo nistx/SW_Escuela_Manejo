@@ -1,5 +1,7 @@
 package com.manejomas.escuelademanejo.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +29,10 @@ public class MatriculaServiceimp implements IMatriculaService {
     @Override
     public String contarClasesRestantes(String matriId) {
         return matriculaDAO.contarClasesRestantes(matriId);
+    }
+
+    @Override
+    public List<Matricula> mostrarMatricula() {
+        return (List<Matricula>) matriculaDAO.findAll();
     }
 }
