@@ -53,15 +53,7 @@
                 </div>
 
                 <ul class="menu-inner py-1">
-                    <!-- Inicio -->
-                    <li class="menu-item" th:classappend="${menuActivo == 'ini'} ? 'active open'">
-                        <a th:href="@{/dashboard/inicio}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-home"></i>
-                            <div data-i18n="Analytics">Inicio</div>
-                        </a>
-                    </li>
-
-                    <!-- Inicio -->
+                    <!-- Matricula -->
                     <li class="menu-item" th:classappend="${menuActivo == 'matri'} ? 'active open'">
                         <a th:href="@{/matricula/}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-book-add"></i>
@@ -153,6 +145,15 @@
                             <div data-i18n="Analytics">Vehículos</div>
                         </a>
                     </li>
+
+                    <!-- Registrar Usuario -->
+                    <li class="menu-item" th:classappend="${menuActivo == 'ini'} ? 'active open' 
+                    " sec:authorize="hasAnyAuthority('Admin')">
+                        <a th:href="@{/usuario/}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-add-to-queue"></i>
+                            <div data-i18n="Analytics">Usuario</div>
+                        </a>
+                    </li>
                 </ul>
             </aside>
             <!-- / Menu -->
@@ -189,8 +190,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">Usuario1</span>
-                                                    <small class="text-muted">Administrador</small>
+                                                    <span class="fw-semibold d-block" sec:authentication="name"></span>
+                                                    <small class="text-muted"
+                                                        sec:authentication="principal.authorities"></small>
                                                 </div>
                                             </div>
                                         </a>
@@ -199,16 +201,12 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="bx bx-user me-2"></i>
-                                            <span class="align-middle">Mi Perfil</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" th:href="@{/login}">
-                                            <i class="bx bx-power-off me-2"></i>
-                                            <span class="align-middle">Cerrar Sesión</span>
-                                        </a>
+                                        <form th:action="@{/logout}" method="post">
+                                            <button class="dropdown-item" type="submit">
+                                                <i class="bx bx-power-off me-2"></i>
+                                                <span class="align-middle">Cerrar Sesión</span>
+                                            </button>
+                                        </form>
                                     </li>
                                 </ul>
                             </li>

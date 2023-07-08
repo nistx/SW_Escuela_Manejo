@@ -8,4 +8,6 @@ public interface IClaseService {
     public void guardarClase(Clase clase);
 
     public List<Clase> mostrarClase();
+
+    public List<Clase> mostrarClaseHoy();
 }

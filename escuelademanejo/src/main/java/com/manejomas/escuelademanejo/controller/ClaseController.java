@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.manejomas.escuelademanejo.model.entidad.Clase;
 import com.manejomas.escuelademanejo.model.entidad.Matricula;
@@ -39,11 +40,18 @@ public class ClaseController {
     private IClaseService claseService;
 
     @RequestMapping("/listaClase")
-    public String clases(Model model) {
+    public String clases(Model model, @RequestParam(required = false) String filtro) {
         model.addAttribute("menuActivo", "clase");
         model.addAttribute("itemActivo", "clase_lista");
 
-        model.addAttribute("listaClase", claseService.mostrarClase());
+        model.addAttribute("filtro", filtro);
+
+        if ("hoy".equals(filtro)) {
+            model.addAttribute("listaClase", claseService.mostrarClaseHoy());
+
+        } else {
+            model.addAttribute("listaClase", claseService.mostrarClase());
+        }
         return "clase/listaClase";
     }
 

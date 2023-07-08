@@ -23,4 +23,9 @@ public class ClaseServiceimp implements IClaseService {
     public List<Clase> mostrarClase() {
         return (List<Clase>) claseDAO.findAll();
     }
+
+    @Override
+    public List<Clase> mostrarClaseHoy() {
+        return (List<Clase>) claseDAO.mostrarClaseHoy();
+    }
 }

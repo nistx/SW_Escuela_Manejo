@@ -20,10 +20,12 @@
 
               <ul class="nav nav-pills flex-column flex-md-row mb-3">
                 <li class="nav-item">
-                  <button class="nav-link active"><i class="bx bx-grid-small me-1"></i>Todos</button>
+                  <button class="nav-link" th:class="${filtro != 'hoy' ? 'nav-link active' : 'nav-link'}"
+                    id="mostrarTodo"><i class="bx bx-grid-small me-1"></i>Todos</button>
                 </li>
                 <li class="nav-item">
-                  <button class="nav-link"><i class='bx bx-down-arrow-alt me-1'></i>
+                  <button class="nav-link" th:class="${filtro == 'hoy' ? 'nav-link active' : 'nav-link'}"
+                    id="mostrarHoy"><i class='bx bx-down-arrow-alt me-1'></i>
                     Hoy</button>
                 </li>
               </ul>
@@ -69,6 +71,29 @@
   </div>
 
   <div th:replace="layouts/plantilla :: librerias"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var mostrarTodoBtn = document.getElementById('mostrarTodo');
+      var mostrarHoyBtn = document.getElementById('mostrarHoy');
+
+      mostrarTodoBtn.addEventListener('click', function () {
+        filtrarTabla('');
+      });
+
+      mostrarHoyBtn.addEventListener('click', function () {
+        filtrarTabla('hoy');
+      });
+
+      function filtrarTabla(filtro) {
+        if (filtro === 'hoy') {
+          window.location.search = "?filtro=" + filtro;
+        }
+        else {
+          window.location.search = "";
+        }
+      }
+    });
+  </script>
 </body>
 
 </html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="layouts/plantilla :: head"></head>
+
+<body>
+  <div class="layout-wrapper layout-content-navbar">
+
+    <div class="layout-container">
+      <aside th:replace="layouts/plantilla :: menu "></aside>
+
+      <div class="layout-page">
+        <nav th:replace="layouts/plantilla :: barra"></nav>
+
+        <div class="content-wrapper">
+          <!-- Contenido -->
+          <div class="container-xxl flex-grow-1 container-p-y">
+
+            <div class="row">
+              <div class="col-md-12">
+                <form th:action="@{/dashboard/guardar}" th:object="${usuario}" method="post">
+                  <div class="card">
+                    <h5 class="card-header"> Nuevo Usuario</h5>
+                    <div class="card-body">
+                      <!-- Username -->
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-floating mb-3">
+                            <input th:field="*{username}" type="text" class="form-control" id="floatingInput"
+                              placeholder="Usuario" aria-describedby="floatingInputHelp" />
+                            <label for="floatingInput">Username</label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Contraseña -->
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-floating mb-3">
+                            <input th:field="*{password}" type="password" class="form-control" id="floatingInput"
+                              placeholder="************" aria-describedby="floatingInputHelp" />
+                            <label for="floatingInput">Password</label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class=" mb-4">
+                        <label for="cboRoles" class="form-label">Rol</label>
+                        <select class="form-select" id="cboRoles" aria-label="Seleccione una opcion"
+                          th:field="*{rol.id}">
+                          <option value="0" selected>Seleccione una opción</option>
+                          <option th:each="item: ${listaRoles}" th:text="${item.authority}" th:value="${item.id}">
+                          </option>
+                        </select>
+                      </div>
+
+                      <button type="submit" class="btn btn-primary">
+                        <span class="tf-icons bx bx-save"></span>
+                        Guardar
+                      </button>
+
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-4">
+            <h5 class="card-header">Lista Usuarios</h5>
+            <div class="table-responsive text-nowrap">
+              <table class="table table-hover table-striped">
+                <thead class="table-light">
+                  <tr>
+                    <th>Username</th>
+                    <th>Rol</th>
+                  </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                  <tr th:each="item: ${listaUsuarios}">
+                    <td th:text="${item.username}"></td>
+                    <td th:text="${item.rol.authority}"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- / Contenido -->
+          <div class="content-backdrop fade"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div th:replace="layouts/plantilla :: librerias"></div>
+</body>
+
+</html>
